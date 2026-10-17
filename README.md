@@ -150,7 +150,7 @@ python -m pytest
 
 GitHub: https://github.com/amoltathesoftwareengineer
 
-LinkedIn: https://linkedin.com/in/amol-tathe-softwareengineer/
+LinkedIn: https://linkedin.com/in/amoltathesoftwareengineer/
 
 ## License
 
