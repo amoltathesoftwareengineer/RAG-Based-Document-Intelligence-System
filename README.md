@@ -1,58 +1,49 @@
+# 📚 RAG-Based Document Intelligence System
 
-# RAG-Based Document Intelligence System
+A Python-based document intelligence application that extracts text from PDF files, creates semantic embeddings, and retrieves relevant passages using FAISS vector similarity search.
 
-An AI-powered document intelligence application that helps users search documents, retrieve relevant information, summarize content, and answer questions using Retrieval-Augmented Generation (RAG).
+## 🚀 Features
 
-## Overview
+- Upload PDF documents through a Streamlit interface
+- Extract text from PDF files
+- Split document text into overlapping chunks
+- Generate semantic embeddings using Sentence Transformers
+- Build a FAISS vector search index
+- Retrieve relevant document passages for user questions
+- Validate invalid, empty, and unsupported PDF inputs
+- Automated tests with pytest
+- GitHub Actions continuous integration
 
-The system converts uploaded documents into searchable text chunks, creates vector embeddings, retrieves relevant content for a user's question, and uses a language model to generate context-aware answers.
+## 🧰 Technology Stack
 
-The goal is to make document analysis faster, more organized, and easier to verify.
-
-## Key Features
-
-- Upload and process PDF documents
-- Extract and split text into manageable chunks
-- Generate semantic embeddings
-- Search relevant document passages using vector similarity
-- Ask natural-language questions about uploaded documents
-- Generate document summaries
-- Display source document references where available
-- Provide clear error messages for unsupported or empty documents
-- Keep API keys and configuration outside source code
-
-## Technology Stack
-
-- Python
+- Python 3.12
 - Streamlit
-- LangChain
+- PyPDF
 - Sentence Transformers
 - FAISS
-- PyPDF
-- LLM API or a compatible local language model
+- NumPy
+- pytest
+- GitHub Actions
 
-## System Architecture
+## 🏗️ Architecture
 
-User Uploads Documents  
-↓  
-Document Text Extraction  
-↓  
-Text Cleaning and Chunking  
-↓  
-Embedding Generation  
-↓  
-FAISS Vector Index  
-↓  
-Relevant Context Retrieval  
-↓  
-Language Model  
-↓  
-Answer with Source References
+1. Upload a PDF document.
+2. Extract readable text.
+3. Split text into overlapping chunks.
+4. Generate embeddings for the chunks.
+5. Build a FAISS vector index.
+6. Convert the user's question into an embedding.
+7. Retrieve the most relevant passages.
 
-## Project Structure
+## 📂 Project Structure
 
 ```text
-RAG-Based-Document-Intelligence/
+RAG-Based-Document-Intelligence-System/
+├── .github/
+│   └── workflows/
+│       └── python-tests.yml
+├── tests/
+│   └── test_document_processing.py
 ├── app.py
 ├── document_loader.py
 ├── text_splitter.py
@@ -62,96 +53,90 @@ RAG-Based-Document-Intelligence/
 ├── requirements.txt
 ├── .env.example
 ├── .gitignore
-├── README.md
-├── documents/
-└── tests/
+├── LICENSE
+└── README.md
 ```
 
-## Getting Started
+## ⚙️ Getting Started
 
 ### Prerequisites
 
-- Python 3.10 or a compatible supported version
+- Python 3.12
 - pip
-- An LLM API key or a supported local model, if generation is enabled
+- Internet access for downloading the embedding model on first use
 
-### Installation
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/amoltathesoftwareengineer/RAG-Based-Document-Intelligence.git
-cd RAG-Based-Document-Intelligence
-python -m venv .venv
+git clone https://github.com/amoltathesoftwareengineer/RAG-Based-Document-Intelligence-System.git
+cd RAG-Based-Document-Intelligence-System
 ```
 
-On Windows:
+### 2. Create and activate a virtual environment
+
+Windows:
 
 ```bash
+python -m venv .venv
 .venv\Scripts\activate
 ```
 
-Install the dependencies:
+macOS/Linux:
 
 ```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Start the application:
+### 4. Run the application
 
 ```bash
 streamlit run app.py
 ```
 
-Open the local URL shown in the terminal, normally:
+Open the local URL displayed in your terminal, usually `http://localhost:8501`.
 
-`http://localhost:8501`
-
-## Configuration
-
-Store optional API credentials in a local `.env` file.
-
-Never commit `.env`, API keys, private documents, or credentials to GitHub.
-
-See `.env.example` for the configuration variables required by the implemented model provider.
-
-## Example Use Cases
-
-- Search company policies and internal manuals
-- Understand lengthy PDF reports
-- Retrieve information from technical documentation
-- Summarize research and business documents
-- Explore knowledge bases using natural-language questions
-
-## Testing
-
-Run automated tests, when available, using:
+## 🧪 Run Tests
 
 ```bash
-python -m pytest
+python -m pytest -v
 ```
 
-## Limitations
+GitHub Actions runs the automated tests on pushes and pull requests.
 
-- Answer quality depends on document extraction, retrieval, and the selected language model.
-- Scanned PDFs may require OCR support.
-- Large document collections may require additional storage and indexing optimizations.
-- AI-generated answers should be verified against their cited sources.
+## ⚠️ Current Limitations
 
-## Future Enhancements
+- The application retrieves relevant passages; it does not yet generate complete answers with an LLM.
+- Scanned PDFs may require OCR.
+- The vector index is held in application session state and is not persisted between sessions.
+- The current implementation focuses on PDF documents.
+- Retrieval quality depends on document quality, chunking, and the embedding model.
+- Automated tests currently focus on document processing and input validation.
 
+## 🔮 Future Enhancements
+
+- Integrate an LLM to generate context-aware answers
+- Display page-level citations for retrieved passages
+- Add persistent vector index storage
 - Support DOCX, TXT, and Markdown files
-- Add hybrid keyword and semantic retrieval
-- Add document-level access controls
-- Implement retrieval evaluation and automated tests
-- Add a Docker deployment configuration
+- Add OCR for scanned PDFs
+- Expand automated tests for embeddings, retrieval, and the UI
+- Add Docker deployment support
 
-## Author
+## 👨‍💻 Author
 
 **Amol Tathe**
 
-GitHub: https://github.com/amoltathesoftwareengineer
+- GitHub: [amoltathesoftwareengineer](https://github.com/amoltathesoftwareengineer)
+- LinkedIn: [Amol Tathe](https://linkedin.com/in/amoltathesoftwareengineer)
 
-LinkedIn: https://linkedin.com/in/amoltathesoftwareengineer/
+## 📄 License
 
-## License
-
-This project is intended as a software engineering and AI learning project. Add an appropriate open-source license before permitting reuse.
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
